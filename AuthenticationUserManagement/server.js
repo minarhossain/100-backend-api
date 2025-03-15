@@ -1,7 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import router from "./routes/authRoutes.js";
+import { router } from "./routes/authRoutes.js";
+import { connectDB } from "./config/db.js";
 
 // load environment variable
 dotenv.config();
@@ -15,11 +16,14 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", router);
-
+app.get("/", (req, res) => {
+  res.send("Hello Word!");
+});
 // Server Listen
-app.listen(port, () => {
+app.listen(port, async () => {
   console.log(`Server running http://localhost:${port}`);
   // database will be connected here
+  await connectDB();
 });
 
 // User Registration (SignUp)

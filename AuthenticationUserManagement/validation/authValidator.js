@@ -1,6 +1,6 @@
 import Joi from "joi";
 
-exports.registerValidator = (data) => {
+export const registerValidator = (data) => {
   const schema = Joi.object({
     name: Joi.string().min(3).required(),
     email: Joi.string().email().required(),
