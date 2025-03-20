@@ -16,9 +16,11 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", router);
+
 app.get("/", (req, res) => {
   res.send("Hello Word!");
 });
+
 // Server Listen
 app.listen(port, async () => {
   console.log(`Server running http://localhost:${port}`);
